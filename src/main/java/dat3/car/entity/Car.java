@@ -1,14 +1,18 @@
 package dat3.car.entity;
 
+import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
-import javax.persistence.*;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name = "cars") // Specify the table name
+@Data // Lombok´s annotation to generate getters & setters, toString, equals, hashCode, and a constructor
+@NoArgsConstructor // Lombok´s annotation to generate a no-args constructor
+@AllArgsConstructor // Lombok´s annotation to generate an all-args constructor
 public class Car {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -27,53 +31,6 @@ public class Car {
     @UpdateTimestamp
     @Column(name = "last_edited")
     private LocalDateTime lastEdited;
-
-    public Car(String brand, String model) {
-        this.id = generateId();
-        this.created = LocalDateTime.now();
-        this.brand = brand;
-        this.model = model;
-    }
-
-    private UUID generateId() {
-        return UUID.randomUUID();
-    }
-
-    public UUID getId() {
-        return id;
-    }
-
-    public String getBrand() {
-        return brand;
-    }
-
-    public void setBrand(String brand) {
-        this.brand = brand;
-    }
-
-    public String getModel() {
-        return model;
-    }
-
-    public void setModel(String model) {
-        this.model = model;
-    }
-
-    public double getPricePrDay() {
-        return pricePrDay;
-    }
-
-    public void setPricePrDay(double pricePrDay) {
-        this.pricePrDay = pricePrDay;
-    }
-
-    public int getBestDiscount() {
-        return bestDiscount;
-    }
-
-    public void setBestDiscount(int bestDiscount) {
-        this.bestDiscount = bestDiscount;
-    }
 
     @PreUpdate
     public void preUpdate() {
