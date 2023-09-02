@@ -7,6 +7,7 @@ import java.util.Optional;
 import java.util.UUID;
 
 public interface MemberRepository extends JpaRepository<Member, String> {
-    Optional<Object> findById(UUID id);
+    Optional<Member> findByUsername(String username);
+    //Optional<Object> findById(UUID id);
     // You can add custom query methods here if needed
 }

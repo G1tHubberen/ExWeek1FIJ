@@ -28,9 +28,9 @@ public class MemberController {
         return memberRepository.findAll();
     }
 
-    @GetMapping("/{id}")
-    public Member getMemberById(@PathVariable UUID id) {
-        return (Member) memberRepository.findById(id).orElse(null);
+    @GetMapping("/{username}")
+    public Member getMemberByUsername(@PathVariable String username) {
+        return /*(Member)*/ memberRepository.findByUsername(username).orElse(null);
     }
 }
 

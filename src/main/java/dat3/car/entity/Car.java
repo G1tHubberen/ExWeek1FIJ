@@ -36,10 +36,13 @@ public class Car extends AdminDetails{
     public void preUpdate() {
         this.lastEdited = LocalDateTime.now();
     }*/
+
     public Car(String brand, String model,double pricePrDay, int bestDiscount) {
         this.brand = brand;
         this.model = model;
         this.pricePrDay = pricePrDay;
         this.bestDiscount = bestDiscount;
     }
+
+
 }
