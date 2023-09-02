@@ -1,4 +1,4 @@
-package dat3;
+package dat3.car;
 
 import dat3.car.entity.Car;
 import dat3.car.repositories.CarRepository;
@@ -20,19 +20,21 @@ public class CarRepositoryTest {
 
     @Test
     public void testSaveAndFindById() {
-        Car car = new Car("Toyota", "Corolla");
+        Car car = new Car("Toyota", "Corolla", 50.0, 10);
         carRepository.save(car);
 
         Car foundCar = carRepository.findById(car.getId()).orElse(null);
         assertThat(foundCar).isNotNull();
         assertThat(foundCar.getBrand()).isEqualTo("Toyota");
         assertThat(foundCar.getModel()).isEqualTo("Corolla");
+        assertThat(foundCar.getPricePrDay()).isEqualTo(50.0);
+        assertThat(foundCar.getBestDiscount()).isEqualTo(10);
     }
 
     @Test
     public void testFindAll() {
-        Car car1 = new Car("Toyota", "Corolla");
-        Car car2 = new Car("Honda", "Civic");
+        Car car1 = new Car("Toyota", "Corolla", 50.0, 10);
+        Car car2 = new Car("Honda", "Civic", 45.0, 8);
         carRepository.saveAll(List.of(car1, car2));
 
         List<Car> cars = carRepository.findAll();
@@ -41,7 +43,7 @@ public class CarRepositoryTest {
 
     @Test
     public void testUpdate() {
-        Car car = new Car("Toyota", "Corolla");
+        Car car = new Car("Toyota", "Corolla", 50.0, 10);
         carRepository.save(car);
 
         car.setBrand("Nissan");
@@ -54,7 +56,7 @@ public class CarRepositoryTest {
 
     @Test
     public void testDelete() {
-        Car car = new Car("Toyota", "Corolla");
+        Car car = new Car("Toyota", "Corolla", 50.0, 10);
         carRepository.save(car);
 
         carRepository.delete(car);
