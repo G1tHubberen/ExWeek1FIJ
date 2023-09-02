@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Member {
+public class Member extends AdminDetails{
     @Id
     @Column
     public String username;
@@ -33,7 +33,7 @@ public class Member {
     public boolean approved;
     @Column
     public int ranking;
-    @CreationTimestamp
+    /*@CreationTimestamp
     @Column(name = "created", nullable = false, updatable = false)
     private LocalDateTime created;
     @UpdateTimestamp
@@ -43,5 +43,5 @@ public class Member {
     @PreUpdate
     public void preUpdate() {
         this.lastEdited = LocalDateTime.now();
-    }
+    }*/
 }

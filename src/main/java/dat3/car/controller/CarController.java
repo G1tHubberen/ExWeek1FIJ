@@ -50,8 +50,8 @@ public class CarController {
             car.setModel(updatedCar.getModel());
             car.setPricePrDay(updatedCar.getPricePrDay());
             car.setBestDiscount(updatedCar.getBestDiscount());
-            car.setLastEdited(updatedCar.getLastEdited());
-            car.setCreated(updatedCar.getCreated());
+            /*car.setLastEdited(updatedCar.getLastEdited());
+            car.setCreated(updatedCar.getCreated());*/
             return carRepository.save(car);
         } else {
             return null; // Car with given ID not found

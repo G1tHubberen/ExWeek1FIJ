@@ -9,11 +9,11 @@ import java.util.UUID;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "cars") // Specify the table name
+//@Table(name = "cars") // Specify the table name
 @Data // Lombok´s annotation to generate getters & setters, toString, equals, hashCode, and a constructor
 @NoArgsConstructor // Lombok´s annotation to generate a no-args constructor
-@AllArgsConstructor // Lombok´s annotation to generate an all-args constructor
-public class Car {
+//@AllArgsConstructor // Lombok´s annotation to generate an all-args constructor
+public class Car extends AdminDetails{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
@@ -25,7 +25,7 @@ public class Car {
     private double pricePrDay;
     @Column(name = "max_discount")
     private int bestDiscount;
-    @CreationTimestamp
+    /*@CreationTimestamp
     @Column(name = "created", nullable = false, updatable = false)
     private LocalDateTime created;
     @UpdateTimestamp
@@ -35,5 +35,11 @@ public class Car {
     @PreUpdate
     public void preUpdate() {
         this.lastEdited = LocalDateTime.now();
+    }*/
+    public Car(String brand, String model,double pricePrDay, int bestDiscount) {
+        this.brand = brand;
+        this.model = model;
+        this.pricePrDay = pricePrDay;
+        this.bestDiscount = bestDiscount;
     }
 }
