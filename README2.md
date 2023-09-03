@@ -1,3 +1,5 @@
+# ExWeek2FIJ
+
 I went through the feedback from last week’s assignment and made some changes to the code. 
 I researched a bit more about Lombok and did as recommended, I inserted annotations from Lombok and deleted my getters 
 and setters, ‘cause they were unnecessary. I looked into the file structure and I’m still a bit uncertain about it, 
