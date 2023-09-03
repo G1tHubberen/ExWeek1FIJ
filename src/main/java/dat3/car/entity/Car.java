@@ -5,6 +5,8 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 import jakarta.persistence.*;
 
@@ -25,17 +27,6 @@ public class Car extends AdminDetails{
     private double pricePrDay;
     @Column(name = "max_discount")
     private int bestDiscount;
-    /*@CreationTimestamp
-    @Column(name = "created", nullable = false, updatable = false)
-    private LocalDateTime created;
-    @UpdateTimestamp
-    @Column(name = "last_edited")
-    private LocalDateTime lastEdited;
-
-    @PreUpdate
-    public void preUpdate() {
-        this.lastEdited = LocalDateTime.now();
-    }*/
 
     public Car(String brand, String model,double pricePrDay, int bestDiscount) {
         this.brand = brand;
@@ -44,5 +35,7 @@ public class Car extends AdminDetails{
         this.bestDiscount = bestDiscount;
     }
 
+    @OneToMany(mappedBy = "car", cascade = CascadeType.ALL)
+    private List<Reservation> carReservations = new ArrayList<>();
 
 }
