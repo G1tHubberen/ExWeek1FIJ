@@ -6,6 +6,8 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Data
@@ -33,15 +35,7 @@ public class Member extends AdminDetails{
     public boolean approved;
     @Column
     public int ranking;
-    /*@CreationTimestamp
-    @Column(name = "created", nullable = false, updatable = false)
-    private LocalDateTime created;
-    @UpdateTimestamp
-    @Column(name = "last_edited")
-    private LocalDateTime lastEdited;
 
-    @PreUpdate
-    public void preUpdate() {
-        this.lastEdited = LocalDateTime.now();
-    }*/
+    @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
+    private List<Reservation> reservations = new ArrayList<>();
 }
