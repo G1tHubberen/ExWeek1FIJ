@@ -28,7 +28,7 @@ public class Car extends AdminDetails{
     @Column(name = "max_discount")
     private int bestDiscount;
 
-    public Car(String brand, String model,double pricePrDay, int bestDiscount) {
+    public Car(String brand, String model, double pricePrDay, int bestDiscount) {
         this.brand = brand;
         this.model = model;
         this.pricePrDay = pricePrDay;

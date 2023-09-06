@@ -15,15 +15,15 @@ import java.util.List;
 @AllArgsConstructor
 public class Member extends AdminDetails{
     @Id
-    @Column
+    @Column(nullable = false)
     public String username;
-    @Column
+    @Column(nullable = false)
     public String password;
-    @Column
+    @Column(nullable = false)
     public String email;
-    @Column
+    @Column(nullable = false)
     public String firstName;
-    @Column
+    @Column(nullable = false)
     public String lastName;
     @Column
     public String street;

@@ -1,13 +1,16 @@
 package dat3.car.config;
 
 import dat3.car.entity.Car;
+import dat3.car.entity.Reservation;
+import dat3.car.entity.Member;
 import dat3.car.repositories.CarRepository;
 import dat3.car.repositories.MemberRepository;
+import dat3.car.repositories.ReservationRepository;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.stereotype.Controller;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -77,5 +80,27 @@ public class DeveloperData implements ApplicationRunner {
         cars.add(new Car("Mercedes-Benz", "GLA", 52.5, 11));
 
         carRepository.saveAll(cars);
+
+        // Create and save members
+        Member member1 = new Member(/* initialize member properties */);
+        Member member2 = new Member(/* initialize member properties */);
+
+        memberRepository.saveAll(List.of(member1, member2));
+
+        // Create and save reservations
+        Reservation reservation1 = new Reservation();
+        reservation1.setMember(member1);
+        reservation1.setCar(car(ID));
+        reservation1.setStartDate(LocalDateTime.now());
+        reservation1.setEndDate(LocalDateTime.now().plusDays(3));
+
+        Reservation reservation2 = new Reservation();
+        reservation2.setMember(member2);
+        reservation2.setCar(car(ID));
+        reservation2.setStartDate(LocalDateTime.now().plusDays(2));
+        reservation2.setEndDate(LocalDateTime.now().plusDays(5));
+        List<Reservation> reservationsToSave = new ArrayList<>();
+
+        ReservationRepository.saveAll(reservationsToSave);
     }
 }
