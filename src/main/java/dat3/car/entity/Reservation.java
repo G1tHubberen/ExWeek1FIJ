@@ -38,4 +38,11 @@ public class Reservation {
     @UpdateTimestamp
     @Column(name = "updated_at")
     private LocalDateTime updatedAt;
+
+    public Reservation(Member member, Car car, LocalDateTime startDate, LocalDateTime endDate) {
+        this.member = member;
+        this.car = car;
+        this.startDate = startDate;
+        this.endDate = endDate;
+    }
 }

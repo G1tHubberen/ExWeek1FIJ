@@ -38,4 +38,17 @@ public class Member extends AdminDetails{
 
     @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
     private List<Reservation> reservations = new ArrayList<>();
+
+    public Member(String username, String password, String email, String firstName, String lastName, String street, String city, String zip, boolean approved, int ranking) {
+        this.username = username;
+        this.password = password;
+        this.email = email;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.street = street;
+        this.city = city;
+        this.zip = zip;
+        this.approved = approved;
+        this.ranking = ranking;
+    }
 }

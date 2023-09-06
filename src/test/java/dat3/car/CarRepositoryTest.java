@@ -2,6 +2,7 @@ package dat3.car;
 
 import dat3.car.entity.Car;
 import dat3.car.repositories.CarRepository;
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
@@ -24,11 +25,11 @@ public class CarRepositoryTest {
         carRepository.save(car);
 
         Car foundCar = carRepository.findById(car.getId()).orElse(null);
-        assertThat(foundCar).isNotNull();
-        assertThat(foundCar.getBrand()).isEqualTo("Toyota");
-        assertThat(foundCar.getModel()).isEqualTo("Corolla");
-        assertThat(foundCar.getPricePrDay()).isEqualTo(50.0);
-        assertThat(foundCar.getBestDiscount()).isEqualTo(10);
+        Assertions.assertThat(foundCar).isNotNull();
+        Assertions.assertThat(foundCar.getBrand()).isEqualTo("Toyota");
+        Assertions.assertThat(foundCar.getModel()).isEqualTo("Corolla");
+        Assertions.assertThat(foundCar.getPricePrDay()).isEqualTo(50.0);
+        Assertions.assertThat(foundCar.getBestDiscount()).isEqualTo(10);
     }
 
     @Test
@@ -38,7 +39,7 @@ public class CarRepositoryTest {
         carRepository.saveAll(List.of(car1, car2));
 
         List<Car> cars = carRepository.findAll();
-        assertThat(cars).hasSize(2);
+        Assertions.assertThat(cars).hasSize(2);
     }
 
     @Test
@@ -50,8 +51,8 @@ public class CarRepositoryTest {
         carRepository.save(car);
 
         Car updatedCar = carRepository.findById(car.getId()).orElse(null);
-        assertThat(updatedCar).isNotNull();
-        assertThat(updatedCar.getBrand()).isEqualTo("Nissan");
+        Assertions.assertThat(updatedCar).isNotNull();
+        Assertions.assertThat(updatedCar.getBrand()).isEqualTo("Nissan");
     }
 
     @Test
@@ -62,7 +63,7 @@ public class CarRepositoryTest {
         carRepository.delete(car);
 
         Car deletedCar = carRepository.findById(car.getId()).orElse(null);
-        assertThat(deletedCar).isNull();
+        Assertions.assertThat(deletedCar).isNull();
     }
 }
 

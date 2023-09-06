@@ -2,6 +2,7 @@ package dat3.car;
 
 import dat3.car.repositories.MemberRepository;
 import dat3.car.entity.Member;
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
@@ -28,8 +29,8 @@ public class MemberRepositoryTest {
         memberRepository.save(member);
 
         Optional<Member> foundMember = memberRepository.findById(member.getUsername());
-        assertThat(foundMember).isPresent();
-        assertThat(foundMember.get().getUsername()).isEqualTo("john_joe");
+        Assertions.assertThat(foundMember).isPresent();
+        Assertions.assertThat(foundMember.get().getUsername()).isEqualTo("john_joe");
     }
 
     @Test
@@ -43,7 +44,7 @@ public class MemberRepositoryTest {
         memberRepository.saveAll(List.of(member1, member2));
 
         List<Member> members = memberRepository.findAll();
-        assertThat(members).hasSize(2);
+        Assertions.assertThat(members).hasSize(2);
     }
 
     @Test
@@ -58,8 +59,8 @@ public class MemberRepositoryTest {
         memberRepository.save(member);
 
         Optional<Member> updatedMember = memberRepository.findById("new_username");
-        assertThat(updatedMember).isPresent();
-        assertThat(updatedMember.get().getUsername()).isEqualTo("new_username");
+        Assertions.assertThat(updatedMember).isPresent();
+        Assertions.assertThat(updatedMember.get().getUsername()).isEqualTo("new_username");
     }
 
     @Test
@@ -73,6 +74,6 @@ public class MemberRepositoryTest {
         memberRepository.delete(member);
 
         Optional<Member> deletedMember = memberRepository.findById("john_doe");
-        assertThat(deletedMember).isEmpty();
+        Assertions.assertThat(deletedMember).isEmpty();
     }
 }

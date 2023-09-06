@@ -18,10 +18,12 @@ import java.util.List;
 public class DeveloperData implements ApplicationRunner {
     private final CarRepository carRepository;
     private final MemberRepository memberRepository;
+    private final ReservationRepository ReservationRepository;
 
-    public DeveloperData(CarRepository carRepository, MemberRepository memberRepository) {
+    public DeveloperData(CarRepository carRepository, MemberRepository memberRepository, ReservationRepository ReservationRepository) {
         this.carRepository = carRepository;
         this.memberRepository = memberRepository;
+        this.ReservationRepository = ReservationRepository;
     }
 
     @Override
@@ -82,25 +84,21 @@ public class DeveloperData implements ApplicationRunner {
         carRepository.saveAll(cars);
 
         // Create and save members
-        Member member1 = new Member(/* initialize member properties */);
-        Member member2 = new Member(/* initialize member properties */);
+        Member member1 = new Member("m1", "1234", "d@c", "Anna", "Madsen", "vej", "by", "0001", true, 1);
+        Member member2 = new Member("m2", "1234", "d@c", "Benny", "Jensen", "vej", "by", "0002", true, 2);
 
         memberRepository.saveAll(List.of(member1, member2));
 
+        // Create and save cars
+        Car car1 = new Car("BMW", "X2", 54.1, 13);
+        Car car2 = new Car("kia", "Niro", 48.4, 9);
+
+        carRepository.saveAll(List.of(car1, car2));
+
         // Create and save reservations
-        Reservation reservation1 = new Reservation();
-        reservation1.setMember(member1);
-        reservation1.setCar(car(ID));
-        reservation1.setStartDate(LocalDateTime.now());
-        reservation1.setEndDate(LocalDateTime.now().plusDays(3));
+        Reservation reservation1 = new Reservation("m1", "c1", LocalDateTime.now(), LocalDateTime.now().plusDays(3));
+        Reservation reservation2 = new Reservation("m2", "c2", LocalDateTime.now(), LocalDateTime.now().plusDays(2));
 
-        Reservation reservation2 = new Reservation();
-        reservation2.setMember(member2);
-        reservation2.setCar(car(ID));
-        reservation2.setStartDate(LocalDateTime.now().plusDays(2));
-        reservation2.setEndDate(LocalDateTime.now().plusDays(5));
-        List<Reservation> reservationsToSave = new ArrayList<>();
-
-        ReservationRepository.saveAll(reservationsToSave);
+        reservationRepository.saveAll(List.of(reservation1, reservation2));
     }
 }
