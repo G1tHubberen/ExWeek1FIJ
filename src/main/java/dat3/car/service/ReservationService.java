@@ -29,13 +29,16 @@ public class ReservationService {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Start and end date must be in the future");
         }
         Member member = memberRepository.findByUsername(body.getUsername()).orElseThrow(
-                () -> new ResponseStatusException(HttpStatus.BAD_REQUEST, "Member not found"));
+                () -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Member not found"));
         Car car = CarRepository.findById(body.getCarId()).orElseThrow(
-                () -> new ResponseStatusException(HttpStatus.BAD_REQUEST, "Car not found"));
-        Reservation reservation = reservationRepository.findById(body.getReservationId()).orElseThrow(
-                () -> new ResponseStatusException(HttpStatus.BAD_REQUEST, "Reservation not found"));
-        Reservation res = new Reservation(body.getStartDate(), car, member);
+                () -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Car not found"));
+        if(reservationRepository.existsByCarIdAndRentalDate(body.getCarId(), body.getStartDate())) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Car is already reserved for this date");
+        }
+        /*Reservation reservation = reservationRepository.findById(body.getReservationId()).orElseThrow(
+                () -> new ResponseStatusException(HttpStatus.BAD_REQUEST, "Reservation not found"));*/
+        Reservation res = reservationRepository.save (new Reservation(body.getStartDate(), car, member));
 
-        return null;
+        return new ReservationResponse(res);
     }
 }
