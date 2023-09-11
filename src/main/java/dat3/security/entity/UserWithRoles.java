@@ -73,7 +73,7 @@ public class UserWithRoles implements UserDetails {
     this.email = email;
   }
 
-  public void setPassword(String pw){
+    public void setPassword(String pw){
     this.password = passwordEncoder.encode(pw);
   }
 

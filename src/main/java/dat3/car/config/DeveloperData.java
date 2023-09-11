@@ -23,12 +23,12 @@ import java.util.List;
 public class DeveloperData implements ApplicationRunner {
     private final CarRepository carRepository;
     private final MemberRepository memberRepository;
-    private final ReservationRepository ReservationRepository;
+    private final ReservationRepository reservationRepository;
 
-    public DeveloperData(CarRepository carRepository, MemberRepository memberRepository, ReservationRepository ReservationRepository) {
+    public DeveloperData(CarRepository carRepository, MemberRepository memberRepository, ReservationRepository reservationRepository) {
         this.carRepository = carRepository;
         this.memberRepository = memberRepository;
-        this.ReservationRepository = ReservationRepository;
+        this.reservationRepository = reservationRepository;
     }
 
     @Override
@@ -107,7 +107,7 @@ public class DeveloperData implements ApplicationRunner {
         Reservation reservation1 = new Reservation("m1", "c1", LocalDateTime.now(), LocalDateTime.now().plusDays(3));
         Reservation reservation2 = new Reservation("m2", "c2", LocalDateTime.now(), LocalDateTime.now().plusDays(2));
 
-        reservationRepository.saveAll(List.of(reservation1, reservation2));
+        ReservationRepository.saveAll(List.of(reservation1, reservation2));
 
         System.out.println("Found: " + reservationRepository.existsByCarIdAndRentalDate(car1.getId(), date1));
 

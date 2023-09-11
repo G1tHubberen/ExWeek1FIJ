@@ -11,7 +11,7 @@ import java.util.UUID;
 @Repository
 public interface ReservationRepository extends JpaRepository<Reservation, UUID> {
 
-    boolean existsByCarIdAndRentalDate(int carId, LocalDate date);
+    boolean existsByCarIdAndRentalDate(UUID carId, LocalDate date);
 
     //saveAll method to save a list of reservations
     static List<Reservation> saveAll(List<Reservation> reservations) {
