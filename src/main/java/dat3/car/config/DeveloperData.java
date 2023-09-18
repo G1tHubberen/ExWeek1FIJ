@@ -104,12 +104,12 @@ public class DeveloperData implements ApplicationRunner {
         LocalDate date1 = LocalDate.of(2023, 10, 1);
         LocalDate date2 = LocalDate.of(2023, 10, 2);
         // Create and save reservations
-        Reservation reservation1 = new Reservation("m1", "c1", LocalDateTime.now(), LocalDateTime.now().plusDays(3));
+        /*Reservation reservation1 = new Reservation("m1", "c1", LocalDateTime.now(), LocalDateTime.now().plusDays(3));
         Reservation reservation2 = new Reservation("m2", "c2", LocalDateTime.now(), LocalDateTime.now().plusDays(2));
 
         ReservationRepository.saveAll(List.of(reservation1, reservation2));
 
-        System.out.println("Found: " + reservationRepository.existsByCarIdAndRentalDate(car1.getId(), date1));
+        System.out.println("Found: " + reservationRepository.existsByCarIdAndRentalDate(car1.getId(), date1));*/
 
 
         setupUserWithRoleUsers();
@@ -129,7 +129,7 @@ public class DeveloperData implements ApplicationRunner {
         System.out.println("******* REMOVE THIS BEFORE DEPLOYMENT, AND SETUP DEFAULT USERS DIRECTLY  *****");
         System.out.println("**** ** ON YOUR REMOTE DATABASE                 ******************************");
         System.out.println("******************************************************************************");
-        UserWithRoles user01 = new UserWithRoles("user01", passwordUsedByAll, "user1@a.dk");
+        /*UserWithRoles user01 = new UserWithRoles("user01", passwordUsedByAll, "user1@a.dk");
         UserWithRoles user02 = new UserWithRoles("user02", passwordUsedByAll, "user2@a.dk");
         UserWithRoles user03 = new UserWithRoles("user03", passwordUsedByAll, "user3@a.dk");
         UserWithRoles user04 = new UserWithRoles("user04", passwordUsedByAll, "user4@a.dk");
@@ -141,6 +141,6 @@ public class DeveloperData implements ApplicationRunner {
         userWithRolesRepository.save(user01);
         userWithRolesRepository.save(user02);
         userWithRolesRepository.save(user03);
-        userWithRolesRepository.save(user04);
+        userWithRolesRepository.save(user04);*/
     }
 }

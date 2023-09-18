@@ -4,16 +4,18 @@ import dat3.car.entity.Reservation;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import java.util.UUID;
 
 import java.time.LocalDate;
+import java.util.UUID;
 
 @Getter
 @Setter
 @NoArgsConstructor
 public class ReservatonResponse {
 
-    int id;
-    int carId;
+    UUID id;
+    UUID carId;
     String brand;
     String model;
     double price;
@@ -25,8 +27,8 @@ public class ReservatonResponse {
         this.carId = reservation.getCar().getId();
         this.brand = reservation.getCar().getBrand();
         this.model = reservation.getCar().getModel();
-        this.reservationDate = reservation.getReservationDate();
-        this.reservationDate = reservation.getReservationDate();
+        this.reservationStartDate = reservation.getReservationStartDate();
+        this.reservationEndDate = reservation.getReservationEndDate();
     }
 
 }
