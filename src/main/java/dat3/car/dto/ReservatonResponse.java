@@ -27,8 +27,8 @@ public class ReservatonResponse {
         this.carId = reservation.getCar().getId();
         this.brand = reservation.getCar().getBrand();
         this.model = reservation.getCar().getModel();
-        this.reservationStartDate = reservation.getReservationStartDate();
-        this.reservationEndDate = reservation.getReservationEndDate();
+        /*this.reservationStartDate = reservation.getReservationStartDate();
+        this.reservationEndDate = reservation.getReservationEndDate();*/
     }
 
 }
